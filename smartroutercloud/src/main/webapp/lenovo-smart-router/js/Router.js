@@ -1,5 +1,15 @@
-function selectMac() {
-	var selectValue = $('#inputMac').val();// 获取值
+function selectMac(obj) {
+	var selectValue;
+	if(obj==2){
+		 selectValue= $('#inputMac').val();//获取值
+	}else{
+		if(obj){
+			selectValue=obj;
+		}else{
+			return;
+		}
+	}
+// 	var selectValue = $('#inputMac').val();// 获取值
 
 	document.getElementById('RouterMac').innerHTML = selectValue;
 
@@ -23,8 +33,8 @@ function selectMac() {
 	});
 
 	function display(listMP) {
-//		document.getElementById('cutcategory').style.display = 'block';
-//		document.getElementById('cutcategoryLabel').style.display = 'block';
+		document.getElementById('cutcategory').style.display = 'block';
+		document.getElementById('cutcategoryLabel').style.display = 'block';
 		document.getElementById('RouterMac').innerHTML = selectValue;
 
 
@@ -160,10 +170,23 @@ function selectMac() {
                         appImageName='WeChat';
                     }else if(internetText[internetText.length-k-1]=='iqiyi'){
                         appImageName='iqiyi';
-                    }else{
+                    }else if(internetText[internetText.length-k-1]=='SohuNews'){
+						appImageName='sohunews';
+					}else if(internetText[internetText.length-k-1]=='sinanews'){
+						appImageName='SinaNews';
+					}else if(internetText[internetText.length-k-1]=='Sina'){
+						appImageName='weibo';
+					}else if(internetText[internetText.length-k-1]=='Chrome'){
+						appImageName='chrome';
+					}else if(internetText[internetText.length-k-1]=='qq'){
+						appImageName='qq';
+					}else if(internetText[internetText.length-k-1]=='Safari'){
+						appImageName='safari';
+					}else if(internetText[internetText.length-k-1]=='Internet Explorer'){
+						appImageName='IE';
+					}else{
 						appImageName='iTunesArtwork';
-					}
-					if (appType[appType.length-k-1]=='Unknown') {
+					}if (appType[appType.length-k-1]=='Unknown') {
 						appType[appType.length-k-1]="";
 					}
                     $("#bodyData").append("<div class='hidde' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;'><img src='router/img/appImage/"+appImageName+".png' style='width: 21px;height: 21px;'/></div>")
@@ -479,7 +502,8 @@ function selectMac() {
 			} else {
 				if (i == (listMP.length - 1)) {
 					var BodH = document.getElementById("bodyData");//获得元素
-					var BodH1 = 625 * (i) + 20 * (i + 1);
+// 					var BodH1 = 625 * (i) + 20 * (i + 1);
+					var BodH1=i*415+20*(i+1)+254+180;
 //					BodH.style.height = BodH1 + 'px';
 					BodH.style.height=BodH1+'px';
 				}
@@ -487,9 +511,26 @@ function selectMac() {
 		}
 	}
 }
-
+//每60秒刷新一次页面
 function reloadPage() {
 //	document.location.reload()
+	var selectValue = $('#inputMac').val();
+    	selectMac(selectValue);
+}
+//排序方式
+ function cutcategory()
+{	
+	var valueName=document.getElementById("cutcategoryLabel").innerHTML;//获取值
+//	alert(valueName);
+    if(valueName=="时间"){
+        document.getElementById("cutcategoryLabel").innerHTML="类别";
+		$(".hidde").hide();
+		$(".hidde1").show();
+    }else{
+        document.getElementById("cutcategoryLabel").innerHTML="时间";
+		$(".hidde").show();
+		$(".hidde1").hide();
+    }
 }
 //获时间差
 function timeDifference(obj){
