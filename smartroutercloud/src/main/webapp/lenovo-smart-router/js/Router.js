@@ -485,6 +485,9 @@ function selectMac() {
 {	
 	
 	var selectValue = $('#inputMac').val();
+	document.getElementById("cutcategoryLabel").innerHTML="时间";
+	$(".hidde").show();
+	$(".hidde1").hide();
     	selectMac(selectValue);
 }
 //排序方式
