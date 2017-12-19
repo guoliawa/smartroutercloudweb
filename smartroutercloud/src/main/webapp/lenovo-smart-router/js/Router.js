@@ -1,6 +1,14 @@
 function selectMac() {
-	var selectValue = $('#inputMac').val();// 获取值
-
+	var selectValue;
+	if(obj==2){
+		 selectValue= $('#inputMac').val();//获取值
+	}else{
+		if(obj){
+			selectValue=obj;
+		}else{
+			return;
+		}
+	}
 	document.getElementById('RouterMac').innerHTML = selectValue;
 
 	var request = $
@@ -23,8 +31,8 @@ function selectMac() {
 	});
 
 	function display(listMP) {
-//		document.getElementById('cutcategory').style.display = 'block';
-//		document.getElementById('cutcategoryLabel').style.display = 'block';
+		document.getElementById('cutcategory').style.display = 'block';
+		document.getElementById('cutcategoryLabel').style.display = 'block';
 		document.getElementById('RouterMac').innerHTML = selectValue;
 
 
@@ -145,329 +153,312 @@ function selectMac() {
 				var appName = i * 415 + 20 * (i + 1) + 60 + 32 * k;// 右app name
 																	// top
                 if(internetText[k]){
-                    var appImageName;
-                    if(internetText[internetText.length-k-1]=='QQ音乐'||internetText[internetText.length-k-1]=='QQMusic'){
-                        appImageName='QQMusic';
-                    }else if(internetText[internetText.length-k-1]=='SohuPlayerSDK'){
-                        appImageName='SohuPlayerSDK';
-                    }else if(internetText[internetText.length-k-1]=='qqlive4Android'||internetText[internetText.length-k-1]=='tencentvideo'){
-                        appImageName='QQlive';
-                    }else if(internetText[internetText.length-k-1]=='SohuPlayerSDK'){
-                        appImageName='SohuPlayerSDK';
-                    }else if(internetText[internetText.length-k-1]=='BiliDroid'){
-                        appImageName='BiliPlayer';
-                    }else if(internetText[internetText.length-k-1]=='wechat'){
-                        appImageName='WeChat';
-                    }else if(internetText[internetText.length-k-1]=='iqiyi'){
-                        appImageName='iqiyi';
-                    }else{
-						appImageName='iTunesArtwork';
-					}
+       
 					if (appType[appType.length-k-1]=='Unknown') {
 						appType[appType.length-k-1]="";
 					}
-                    $("#bodyData").append("<div class='hidde' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;'><img src='router/img/appImage/"+appImageName+".png' style='width: 21px;height: 21px;'/></div>")
+                    $("#bodyData").append("<div class='hidde' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;'><img src='router/img/appImage/"+imgName(internetText[internetText.length-k-1])+".png' style='width: 21px;height: 21px;'/></div>")
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 100px;height: 22px;position: absolute;'>"+internetText[internetText.length-k-1]+"</div>")
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;'>"+appType[appType.length-k-1]+"</div>")
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(apptimeText[apptimeText.length-k-1])+"</div>")
                 }
 			}
-			for (var j=0;j<5;j++) {
-				var appName = i * 415 + 20 * (i + 1) + 254 + 32 * j;// 右app name
+	for (var j=0;j<5;j++) {
+		var appName = i * 415 + 20 * (i + 1) + 254 + 32 * j;// 右app name
 																	// top
                 if(webText[j]){
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 552px;width: 100px;height: 22px;position: absolute;'>"+webText[webText.length-j-1]+"</div>")
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;'>"+webType[webType.length-j-1]+"</div>")
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(webtimeText[webtimeText.length-j-1])+"</div>")
                 }
-			}
+	}
 
 			var arr = new Array(0);
 			var arrApp = new Array(0);
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="video"){//视频
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="video"){//视频
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="video"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="social"){//社交
-					arr.push(j);	
-				}
-				if(appType[j]=="social"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="video"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="news"){//新闻
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="social"){//社交
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="news"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="shopping"){//购物
-					arr.push(j);	
-				}
-				if(appType[j]=="shopping"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="social"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="music"){//音乐
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="news"){//新闻
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="music"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="trip"){//旅行
-					arr.push(j);	
-				}
-				if(appType[j]=="trip"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="news"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="life-service"){//生活服务
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="shopping"){//购物
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="life-service"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="game"){//游戏
-					arr.push(j);	
-				}
-				if(appType[j]=="game"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="shopping"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="e-radio"){//网络电台
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="music"){//音乐
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="e-radio"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="security"){//安全
-					arr.push(j);	
-				}
-				if(appType[j]=="security"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="music"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="dev-manage"){//设备管理
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="trip"){//旅行
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="dev-manage"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="portal"){//门户
-					arr.push(j);	
-				}
-				if(appType[j]=="portal"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="trip"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="military"){//军事
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="life-service"){//生活服务
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="military"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="sports"){//体育
-					arr.push(j);	
-				}
-				if(appType[j]=="sports"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="life-service"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="finance"){//财经
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="game"){//游戏
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="finance"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="tech"){//科技
-					arr.push(j);	
-				}
-				if(appType[j]=="tech"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="game"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="mobile"){//手机
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="e-radio"){//网络电台
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="mobile"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="ent"){//娱乐
-					arr.push(j);	
-				}
-				if(appType[j]=="ent"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="e-radio"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="auto"){//汽车
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="security"){//安全
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="auto"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="blog"){//博客
-					arr.push(j);	
-				}
-				if(appType[j]=="blog"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="security"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="house"){//房产
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="dev-manage"){//设备管理
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="house"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="book"){//读书
-					arr.push(j);	
-				}
-				if(appType[j]=="book"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="dev-manage"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="edu"){//教育
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="portal"){//门户
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="edu"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="fashion"){//时尚
-					arr.push(j);	
-				}
-				if(appType[j]=="fashion"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="portal"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="health"){//健康
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="military"){//军事
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="health"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="lottery"){//彩票
-					arr.push(j);	
-				}
-				if(appType[j]=="lottery"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="military"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="art"){//艺术
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="sports"){//体育
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="art"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="pet"){//宠物
-					arr.push(j);	
-				}
-				if(appType[j]=="pet"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="sports"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="history"){//历史
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="finance"){//财经
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="history"){
-					arrApp.push(j);	
-				}
-			}
-			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="culture"){//文化
-					arr.push(j);	
-				}
-				if(appType[j]=="culture"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="finance"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="society"){//社会
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="tech"){//科技
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="society"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="tech"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var	 j=0;j<5;j++) {
-				if(webType[j]=="astro"){//星座
-					arr.push(j);	
+				if(webType[webType.length-j-1]=="mobile"){//手机
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="astro"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]=="mobile"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="ent"){//娱乐
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="ent"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="auto"){//汽车
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="auto"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="blog"){//博客
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="blog"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="house"){//房产
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="house"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="book"){//读书
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="book"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="edu"){//教育
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="edu"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="fashion"){//时尚
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="fashion"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="health"){//健康
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="health"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="lottery"){//彩票
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="lottery"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="art"){//艺术
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="art"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="pet"){//宠物
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="pet"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="history"){//历史
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="history"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="culture"){//文化
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="culture"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="society"){//社会
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="society"){
+					arrApp.push(appType.length-j-1);	
+				}
+			}
+			for (var	 j=0;j<5;j++) {
+				if(webType[webType.length-j-1]=="astro"){//星座
+					arr.push(webType.length-j-1);	
+				}
+				if(appType[appType.length-j-1]=="astro"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 			for (var j=0;j<5;j++) {
-				if(webType[j]=="Unknown"){//
-					arr.push(j);	
+				if(webType[webType.length-j-1]==""||webType[webType.length-j-1]=="Unknown"){//
+					arr.push(webType.length-j-1);	
 				}
-				if(appType[j]=="Unknown"){
-					arrApp.push(j);	
+				if(appType[appType.length-j-1]==""||appType[appType.length-j-1]=="Unknown"){
+					arrApp.push(appType.length-j-1);	
 				}
 			}
 
-            for (var k=0;k<arr.length;k++) {
-                var imgeYou=i*415+20*(i+1)+54+32*k;//右image top
-                var appName=i*415+20*(i+1)+60+32*k;//右app name top
-                if(internetText[arr[k]]){
-                    
-                    $("#bodyData").append("<div class='hidde1' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;display:none;'><img src='router/img/appImage/"+internetText[arr[k]]+".png' style='width: 21px;height: 21px;'/></div>")
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 100px;height: 22px;position: absolute;display:none;'>"+internetText[arr[k]]+"</div>")
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;display:none;'>"+appType[arr[k]]+"</div>")
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(apptimeText[arr[k]])+"</div>")
-                }
-            }
-            for (var j=0;j<arrApp.length;j++) {
-                var appName=i*415+20*(i+1)+254+32*j;//右app name top
-                if(webText[arrApp[j]]){
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 552px;width: 100px;height: 22px;position: absolute;display:none;'>"+webText[arrApp[j]]+"</div>")
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;display:none;'>"+webType[arrApp[j]]+"</div>")
-                    $("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(webtimeText[arrApp[j]])+"</div>")
-                }
-            }
+            for (var k=0;k<5;k++) {
+				var imgeYou=i*415+20*(i+1)+54+32*k;//右image top
+				var appName=i*415+20*(i+1)+60+32*k;//右app name top
+				if(internetText[arrApp[k]]){
+					
+				$("#bodyData").append("<div class='hidde1' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;display:none;'><img src='img/appImage/"+imgName(internetText[arrApp[k]])+".png' style='width: 21px;height: 21px;'/></div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 100px;height: 22px;position: absolute;display:none;'>"+internetText[arrApp[k]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;display:none;'>"+appType[arrApp[k]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(apptimeText[arrApp[k]])+"</div>")
+				}
+			}
+			for (var j=0;j<5;j++) {
+				var appName=i*415+20*(i+1)+254+32*j;//右app name top
+				if(webText[arr[j]]){
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 552px;width: 100px;height: 22px;position: absolute;display:none;'>"+webText[arr[j]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 711px;width: 100px;height: 22px;position: absolute;display:none;'>"+webType[arr[j]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 828px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(webtimeText[arr[j]])+"</div>")
+				}
+			}
 
 			//网页高度
 			if (listMP.length == 1) {
@@ -479,7 +470,8 @@ function selectMac() {
 			} else {
 				if (i == (listMP.length - 1)) {
 					var BodH = document.getElementById("bodyData");//获得元素
-					var BodH1 = 625 * (i) + 20 * (i + 1);
+// 					var BodH1 = 625 * (i) + 20 * (i + 1);
+					var BodH1=i*415+20*(i+1)+254+180;
 //					BodH.style.height = BodH1 + 'px';
 					BodH.style.height=BodH1+'px';
 				}
@@ -488,8 +480,27 @@ function selectMac() {
 	}
 }
 
-function reloadPage() {
-//	document.location.reload()
+//每60秒刷新一次页面
+ function reloadPage()
+{	
+	
+	var selectValue = $('#inputMac').val();
+    	selectMac(selectValue);
+}
+//排序方式
+ function cutcategory()
+{	
+	var valueName=document.getElementById("cutcategoryLabel").innerHTML;//获取值
+//	alert(valueName);
+    if(valueName=="时间"){
+        document.getElementById("cutcategoryLabel").innerHTML="类别";
+		$(".hidde").hide();
+		$(".hidde1").show();
+    }else{
+        document.getElementById("cutcategoryLabel").innerHTML="时间";
+		$(".hidde").show();
+		$(".hidde1").hide();
+    }
 }
 //获时间差
 function timeDifference(obj){
@@ -523,4 +534,42 @@ function timeDifference(obj){
         }
         
     }
+}
+
+function imgName(obj){
+	var appImageName='iTunesArtwork';
+	for (var k=0;k<5;k++) {
+					if(obj=='QQ音乐'||obj=='QQMusic'){
+						appImageName='QQMusic';
+					}else if(obj=='SohuPlayerSDK'){
+						appImageName='SohuPlayerSDK';
+					}else if(obj=='qqlive4Android'||obj=='tencentvideo'){
+						appImageName='QQlive';
+					}else if(obj=='SohuPlayerSDK'){
+						appImageName='SohuPlayerSDK';
+					}else if(obj=='BiliDroid'){
+						appImageName='BiliPlayer';
+					}else if(obj=='wechat'){
+						appImageName='WeChat';
+					}else if(obj=='iqiyi'){
+						appImageName='iqiyi';
+					}else if(obj=='SohuNews'){
+						appImageName='sohunews';
+					}else if(obj=='SinaNews'){
+						appImageName='SinaNews';
+					}else if(obj=='Sina'){
+						appImageName='weibo';
+					}else if(obj=='Chrome'||obj=='Chrome Webview'){
+						appImageName='chrome';
+					}else if(obj=='qq'){
+						appImageName='qq';
+					}else if(obj=='Safari'){
+						appImageName='safari';
+					}else if(obj=='Internet Explorer'){
+						appImageName='IE';
+					}else{
+						appImageName='iTunesArtwork';
+					}
+	}
+	return appImageName;
 }
