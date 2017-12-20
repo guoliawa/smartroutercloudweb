@@ -25,7 +25,8 @@
 		style="color: red; font: 12px; top: 10px; left: 10px; width: 100px; height: 20px;"></div>
 	<input id="inputMac" type="text" placeholder="输入Mac地址查询">
 	<button id="selectMacText" type="submit" onclick="selectMac(2)">搜索</button>
-	<button id="cutcategory" style="position: absolute;left: 1050px;top:22px;height: 33px;width: 63px;display:none;" type="submit" onclick="cutcategory()">排序方式</button>
+	<button id="cutcategory" style="position: absolute;left: 1050px;top:22px;height: 33px;width: 63px;display:none;" type="submit" onclick="cutcategory()">排序</button>
+	<div id="cutcategoryLabel" style="position: absolute;left: 1118px;top:25px;height: 33px;width: 90px;color: #999999;display:none;">时间</div>
 	<!--<div  class="bodyData1">-->
 	<table id="bodyData"
 		style="position: absolute; left: 0px; top: 83px; height: 100%; width: 100%; background-color: #EEF4F9;">
