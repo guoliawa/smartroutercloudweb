@@ -1,4 +1,4 @@
-function selectMac() {
+function selectMac(obj) {
 	var selectValue;
 	if(obj==2){
 		 selectValue= $('#inputMac').val();//获取值
