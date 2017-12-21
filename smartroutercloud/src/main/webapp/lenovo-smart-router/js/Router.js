@@ -31,6 +31,7 @@ function selectMac(obj) {
 	});
 
 	function display(listMP) {
+		$("#bodyData").empty();
 		document.getElementById('cutcategory').style.display = 'block';
 		document.getElementById('cutcategoryLabel').style.display = 'block';
 		document.getElementById('RouterMac').innerHTML = selectValue;
