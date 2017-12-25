@@ -36,5 +36,7 @@
 
 	<script type="text/javascript"
 		src="/smartroutercloud/router/js/Router.js"></script>
+	<script type="text/javascript" src="js/ImageSwitch.js"></script>
+	<script type="text/javascript" src="js/CategoryJudge.js"></script>
 </body>
 </html>
