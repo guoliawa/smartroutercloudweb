@@ -152,7 +152,7 @@ function selectMac(obj) {
 			for (var k=0;k<5;k++) {
 				var imgeYou = i * 415 + 20 * (i + 1) + 54 + 32 * k;// 右image
 																	// top
-				var appName = i * 415 + 20 * (i + 1) + 60 + 32 * k;// 右app name
+				var appName = i * 415 + 20 * (i + 1) + 60 + 32 * k-3;// 右app name
 																	// top
                 if(internetText[k]){
        
@@ -160,9 +160,9 @@ function selectMac(obj) {
 						appType[appType.length-k-1]="";
 					}
                     $("#bodyData").append("<div class='hidde' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;'><img src='router/img/appImage/"+imgName(internetText[internetText.length-k-1])+".png' style='width: 21px;height: 21px;'/></div>")
-                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 200px;height: 22px;position: absolute;'>"+internetText[internetText.length-k-1]+"</div>")
-                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 100px;height: 22px;position: absolute;'>"+appType[appType.length-k-1]+"</div>")
-                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 928px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(apptimeText[apptimeText.length-k-1])+"</div>")
+                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 200px;height: 22px;position: absolute;'>"+appNameText(internetText[internetText.length-k-1])+"</div>")
+                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 150px;height: 22px;position: absolute;'>"+appType[appType.length-k-1]+"</div>")
+                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 978px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(apptimeText[apptimeText.length-k-1])+"</div>")
                 }
 			}
 	for (var j=0;j<5;j++) {
@@ -170,8 +170,8 @@ function selectMac(obj) {
 																	// top
                 if(webText[j]){
                     $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 552px;width: 200px;height: 22px;position: absolute;'>"+webText[webText.length-j-1]+"</div>")
-                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 100px;height: 22px;position: absolute;'>"+webType[webType.length-j-1]+"</div>")
-                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 928px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(webtimeText[webtimeText.length-j-1])+"</div>")
+                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 150px;height: 22px;position: absolute;'>"+webType[webType.length-j-1]+"</div>")
+                    $("#bodyData").append("<div class='hidde' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 978px;width: 300px;height: 22px;position: absolute;'>"+timeDifference(webtimeText[webtimeText.length-j-1])+"</div>")
                 }
 	}
 
@@ -179,14 +179,14 @@ function selectMac(obj) {
 
             for (var k=0;k<5;k++) {
 				var imgeYou=i*415+20*(i+1)+54+32*k;//右image top
-				var appName=i*415+20*(i+1)+60+32*k;//右app name top
+				var appName=i*415+20*(i+1)+60+32*k-3;//右app name top
 		    		var arrApp=categoryAppName(appType);
 				if(internetText[arrApp[k]]){
 					
 				$("#bodyData").append("<div class='hidde1' style='top:"+imgeYou+"px;left: 552px;width: 21px;height: 21px;position: absolute;display:none;'><img src='router/img/appImage/"+imgName(internetText[arrApp[k]])+".png' style='width: 21px;height: 21px;'/></div>")
-				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 200px;height: 22px;position: absolute;display:none;'>"+internetText[arrApp[k]]+"</div>")
-				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 100px;height: 22px;position: absolute;display:none;'>"+appType[arrApp[k]]+"</div>")
-				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 928px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(apptimeText[arrApp[k]])+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 580px;width: 200px;height: 22px;position: absolute;display:none;'>"+appNameText(internetText[arrApp[k]])+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 150px;height: 22px;position: absolute;display:none;'>"+appType[arrApp[k]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 978px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(apptimeText[arrApp[k]])+"</div>")
 				}
 			}
 			for (var j=0;j<5;j++) {
@@ -194,8 +194,8 @@ function selectMac(obj) {
 				var arr=categoryAppName(webType);
 				if(webText[arr[j]]){
 				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 552px;width: 200px;height: 22px;position: absolute;display:none;'>"+webText[arr[j]]+"</div>")
-				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 100px;height: 22px;position: absolute;display:none;'>"+webType[arr[j]]+"</div>")
-				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 928px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(webtimeText[arr[j]])+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 811px;width: 150px;height: 22px;position: absolute;display:none;'>"+webType[arr[j]]+"</div>")
+				$("#bodyData").append("<div class='hidde1' style='color: #697B8C;font-size: 12px;top:"+appName+"px;left: 978px;width: 300px;height: 22px;position: absolute;display:none;'>"+timeDifference(webtimeText[arr[j]])+"</div>")
 				}
 			}
 
